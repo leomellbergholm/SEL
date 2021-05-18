@@ -1,6 +1,7 @@
 import "./App.css";
 import UserSearch from "./userSearch";
 
+
 function App() {
   return (
     <div className="App">
@@ -8,8 +9,7 @@ function App() {
       <h3>Search for a User</h3>
       <hr></hr>
       <UserSearch />
-      <searchResultsUser />
-      <searchResultsInfo />
+      
     </div>
   );
 }
