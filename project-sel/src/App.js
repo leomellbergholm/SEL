@@ -9,7 +9,7 @@ function App() {
       <h3>Search for a User</h3>
       <hr></hr>
       <UserSearch />
-      
+      {/* <UserProfile /> */}
     </div>
   );
 }
