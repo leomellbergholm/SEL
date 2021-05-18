@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
+import UserSearch from "./userSearch";
 
 function App() {
   return (
@@ -7,7 +7,9 @@ function App() {
       <h1>Project SEL - A League of Legend search</h1>
       <h3>Search for a User</h3>
       <hr></hr>
-      <userSearch />
+      <UserSearch />
+      <searchResultsUser />
+      <searchResultsInfo />
     </div>
   );
 }
