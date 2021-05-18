@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import userSearch from "./userSearch";
 
 function App() {
   return (
@@ -8,6 +9,8 @@ function App() {
       <h3>Search for a User</h3>
       <hr></hr>
       <userSearch />
+      <searchResultsUser />
+      <searchResultsInfo />
     </div>
   );
 }
