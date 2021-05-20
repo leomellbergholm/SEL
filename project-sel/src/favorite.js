@@ -5,9 +5,9 @@ export default function Favorite(props){
     return(
         <div>
             <li className="favorite-list-item">
-                {props.summoner.name}
-                {props.summoner.image}
-                {props.summoner.level}
+                {props.item.profileName}
+                {props.item.profileImage}
+                {props.item.profileLevel}
             </li>
         </div>
     )
