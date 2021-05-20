@@ -1,26 +1,29 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Axios from "axios";
 import "./App.css";
+import Mastery from "./Mastery.js";
+import championData from "./data/champion.json";
 
 export default function UserSearch() {
   const [userInfo, setUserInfo] = useState([]);
   const [masteryInfo, setMasteryInfo] = useState([]);
-  const apiKey = "RGAPI-260f5ec1-aeab-4366-b948-fb940416c649";
+  const apiKey = "RGAPI-afa665da-c92c-42c3-aa02-cf590117330a";
   const inputRef = useRef();
+  const emptyArray = [];
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+  let champName = "";
 
   const apiCall = () => {
     Axios.get(
       `${corsAnywhere}https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${inputRef.current.value}?api_key=${apiKey}`
     ).then((response) => {
-      if (response.status == 200) {
+      if (response.status === 200) {
         const summonerId = response.data.id;
-        console.log(response);
         setUserInfo([
           {
             summonerLvl: response.data.summonerLevel,
             summonerName: response.data.name,
-            summonerIcon: response.data.profileIconId,
+            summonerIcon: `http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${response.data.profileIconId}.png`,
           },
         ]);
         inputRef.current.value = "";
@@ -28,14 +31,21 @@ export default function UserSearch() {
         Axios.get(
           `${corsAnywhere}https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}?api_key=${apiKey}`
         ).then((response) => {
-          console.log(response);
-          setMasteryInfo([
-            {
-              championId: response.data[0].championId,
-              championPoints: response.data[0].championPoints,
-              championLvl: response.data[0].championLevel,
-            },
-          ]);
+          for (let x = 0; x <= 2; x++) {
+            for (let i in championData.data) {
+              if (championData.data[i].key == response.data[x].championId) {
+                champName = championData.data[i].id;
+              }
+            }
+            emptyArray.push({
+              championName: champName,
+              championId: response.data[x].championId,
+              championPoints: response.data[x].championPoints,
+              championLvl: response.data[x].championLevel,
+              championImg: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champName}_0.jpg`,
+            });
+          }
+          setMasteryInfo(emptyArray);
         });
       }
     });
@@ -62,6 +72,9 @@ export default function UserSearch() {
           onClick={apiCall}
         />
       </form>
+      {masteryInfo.map((champ) => (
+        <Mastery item={champ} key={champ.championId} />
+      ))}
     </div>
   );
 }
