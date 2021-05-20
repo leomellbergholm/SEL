@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Axios from "axios";
 import "./App.css";
+export const userInfo = true;
 
 export default function UserSearch() {
   const [userInfo, setUserInfo] = useState([]);

@@ -1,5 +1,6 @@
 import "./App.css";
 import UserSearch from "./userSearch";
+import FavoriteList from "./favoriteList";
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <hr></hr>
       <UserSearch />
       {/* <UserProfile /> */}
+      <FavoriteList />
     </div>
   );
 }
