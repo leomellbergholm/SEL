@@ -12,6 +12,7 @@ export default function UserSearch() {
   const emptyArray = [];
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
   let champName = "";
+  let champBlurb = "";
 
   const apiCall = () => {
     Axios.get(
@@ -35,10 +36,12 @@ export default function UserSearch() {
             for (let i in championData.data) {
               if (championData.data[i].key == response.data[x].championId) {
                 champName = championData.data[i].id;
+                champBlurb = championData.data[i].blurb;
               }
             }
             emptyArray.push({
               championName: champName,
+              championBlurb: champBlurb,
               championId: response.data[x].championId,
               championPoints: response.data[x].championPoints,
               championLvl: response.data[x].championLevel,
@@ -72,9 +75,12 @@ export default function UserSearch() {
           onClick={apiCall}
         />
       </form>
-      {masteryInfo.map((champ) => (
-        <Mastery item={champ} key={champ.championId} />
-      ))}
+      <div className="float-left">här kommer profilen</div>
+      <div className="float-right">
+        {masteryInfo.map((champ) => (
+          <Mastery item={champ} key={champ.championId} />
+        ))}
+      </div>
     </div>
   );
 }
