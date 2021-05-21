@@ -3,6 +3,7 @@ import Axios from "axios";
 import "./App.css";
 import Mastery from "./Mastery.js";
 import FavoriteList from './favoriteList'
+import Profile from "./Profile.js";
 import championData from "./data/champion.json";
 export const userInfo = true;
 
@@ -14,6 +15,7 @@ export default function UserSearch() {
   const emptyArray = [];
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
   let champName = "";
+  let champBlurb = "";
 
   const apiCall = () => {
     Axios.get(
@@ -37,10 +39,12 @@ export default function UserSearch() {
             for (let i in championData.data) {
               if (championData.data[i].key == response.data[x].championId) {
                 champName = championData.data[i].id;
+                champBlurb = championData.data[i].blurb;
               }
             }
             emptyArray.push({
               championName: champName,
+              championBlurb: champBlurb,
               championId: response.data[x].championId,
               championPoints: response.data[x].championPoints,
               championLvl: response.data[x].championLevel,
@@ -74,11 +78,17 @@ export default function UserSearch() {
           onClick={apiCall}
         />
       </form>
-      {masteryInfo.map((champ) => (
-        <Mastery item={champ} key={champ.championId} />
-      ))}
-      
-      <FavoriteList />
+      <div className="float-left">
+        {userInfo.map((summoner) => (
+          <Profile item={summoner} key={summoner.summonerName} />
+        ))}
+      </div>
+      <div className="float-right">
+        {masteryInfo.map((champ) => (
+          <Mastery item={champ} key={champ.championId} />
+        ))}
+      </div>
+      <FavoriteList item={userInfo} />
     </div>
   );
 }
