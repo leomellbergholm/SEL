@@ -6,7 +6,12 @@ export default function Favorite(props){
         <div>
             <li className="favorite-list-item">
                 {props.item.name}
-                {props.item.icon}
+                <img
+                    src={props.item.icon}
+                    className="card-img-top"
+                    alt="Summoner Icon"
+                    style={{ width: "200px", borderRadius: "50%" }}
+                />
                 {props.item.lvl}
             </li>
         </div>

@@ -1,35 +1,45 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Favorite from './favorite'
 import {userInfo} from "./userSearch";
 
-export default function FavoriteList() {
+export default function FavoriteList(props) {
 
     //userinfo.summonername -> LocalStorage -> länkar -> apicall för profil -> userinfo.summonerName
     const [favorites, setFavorites] = useState([]);
 
     function loadFavorites() {
+        
         const favorites = localStorage.favorites;
         if (favorites === undefined) {
             return [];
         }
         return JSON.parse(favorites);
+        
     }
 
     function saveFavorites(favorites) {
         let jsonFavorites = JSON.stringify(favorites);
+
         localStorage.setItem("favorites", jsonFavorites);
     }
 
 
     function addFavorite(){
         setFavorites([...favorites, {
-            name: userInfo.summonerName,
-            icon: userInfo.summonerIcon,
-            lvl: userInfo.summonerLvl
+            name: props.item[0].summonerName,
+            icon: props.item[0].summonerIcon,
+            lvl: props.item[0].summonerLvl
         }]);
-        console.log(userInfo);
+
+        const favoritesList = loadFavorites();
+        favoritesList.push(favorites);
+    
+        saveFavorites(favoritesList);
+
         console.log(favorites);
+        
     }
+
     return(
         <div>
             <h3>Favorites</h3>
