@@ -4,15 +4,14 @@ export default function Mastery(props) {
   return (
     <div className="card m-3 p-2" style={{ width: "30rem" }}>
       <img
-        src={props.item.championImg}
-        className="card-img-top"
+        src={props.item.summonerIcon}
+        className="card-img-top d-block m-auto"
         alt="Champion splashart"
+        style={{ width: "200px", borderRadius: "50%" }}
       />
       <div className="card-body">
-        <h5 className="card-title">{props.item.championName}</h5>
-        <h6>{props.item.championLvl}</h6>
-        <h6>{props.item.championPoints}</h6>
-        <p className="card-text">{props.item.championBlurb}</p>
+        <h5 className="card-title">{props.item.summonerName}</h5>
+        <h6>{props.item.summonerLvl}</h6>
       </div>
     </div>
   );

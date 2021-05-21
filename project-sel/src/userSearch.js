@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Axios from "axios";
 import "./App.css";
 import Mastery from "./Mastery.js";
+import Profile from "./Profile.js";
 import championData from "./data/champion.json";
 
 export default function UserSearch() {
@@ -75,7 +76,11 @@ export default function UserSearch() {
           onClick={apiCall}
         />
       </form>
-      <div className="float-left">här kommer profilen</div>
+      <div className="float-left">
+        {userInfo.map((summoner) => (
+          <Profile item={summoner} key={summoner.summonerName} />
+        ))}
+      </div>
       <div className="float-right">
         {masteryInfo.map((champ) => (
           <Mastery item={champ} key={champ.championId} />
