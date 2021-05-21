@@ -1,4 +1,8 @@
+body {
+  background-size: 100%;
+  background-attachment: fixed;
+  background-image: url("https://th.bing.com/th/id/Rdce84a42b02d9fce81bf5926a6f473e4?rik=HMM7EGYvrfMVHw&riu=http%3a%2f%2fhdqwalls.com%2fwallpapers%2fpyke-league-of-legends-4k-xm.jpg&ehk=ummoUwjM4cCBIdKYIGoPoNQKp9UK%2bSCGIRr8xHiNKrI%3d&risl=&pid=ImgRaw");
+}
 .App {
   text-align: center;
 }
-

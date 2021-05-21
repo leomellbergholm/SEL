@@ -8,7 +8,9 @@ import championData from "./data/champion.json";
 export default function UserSearch() {
   const [userInfo, setUserInfo] = useState([]);
   const [masteryInfo, setMasteryInfo] = useState([]);
-  const apiKey = "RGAPI-afa665da-c92c-42c3-aa02-cf590117330a";
+  const [loading, setLoading] = useState(false);
+
+  const apiKey = "RGAPI-2d06e226-14dd-4c54-8e91-8afffddf345e";
   const inputRef = useRef();
   const emptyArray = [];
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
@@ -16,44 +18,52 @@ export default function UserSearch() {
   let champBlurb = "";
 
   const apiCall = () => {
+    setLoading(true);
     Axios.get(
       `${corsAnywhere}https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${inputRef.current.value}?api_key=${apiKey}`
-    ).then((response) => {
-      if (response.status === 200) {
-        const summonerId = response.data.id;
-        setUserInfo([
-          {
-            summonerLvl: response.data.summonerLevel,
-            summonerName: response.data.name,
-            summonerIcon: `http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${response.data.profileIconId}.png`,
-          },
-        ]);
-        inputRef.current.value = "";
+    )
+      .then((response) => {
+        if (response.status === 200) {
+          const summonerId = response.data.id;
+          setUserInfo([
+            {
+              summonerLvl: response.data.summonerLevel,
+              summonerName: response.data.name,
+              summonerIcon: `http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${response.data.profileIconId}.png`,
+            },
+          ]);
 
-        Axios.get(
-          `${corsAnywhere}https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}?api_key=${apiKey}`
-        ).then((response) => {
-          for (let x = 0; x <= 2; x++) {
-            for (let i in championData.data) {
-              if (championData.data[i].key == response.data[x].championId) {
-                champName = championData.data[i].id;
-                champBlurb = championData.data[i].blurb;
+          Axios.get(
+            `${corsAnywhere}https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}?api_key=${apiKey}`
+          ).then((response) => {
+            for (let x = 0; x <= 2; x++) {
+              for (let i in championData.data) {
+                if (championData.data[i].key == response.data[x].championId) {
+                  champName = championData.data[i].id;
+                  champBlurb = championData.data[i].blurb;
+                }
               }
+              emptyArray.push({
+                championName: champName,
+                championBlurb: champBlurb,
+                championId: response.data[x].championId,
+                championPoints: response.data[x].championPoints,
+                championLvl: response.data[x].championLevel,
+                championImg: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champName}_0.jpg`,
+              });
             }
-            emptyArray.push({
-              championName: champName,
-              championBlurb: champBlurb,
-              championId: response.data[x].championId,
-              championPoints: response.data[x].championPoints,
-              championLvl: response.data[x].championLevel,
-              championImg: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champName}_0.jpg`,
-            });
-          }
-          setMasteryInfo(emptyArray);
-        });
-      }
-    });
+            setMasteryInfo(emptyArray);
+          });
+        }
+      })
+      .catch((error) => {
+        alert(error.response.statusText);
+      });
+    setTimeout(() => {
+      setLoading(false); // count is 0 here
+    }, 1000);
   };
+
   console.log(masteryInfo);
   console.log(userInfo);
   return (
@@ -71,21 +81,29 @@ export default function UserSearch() {
         />
         <input
           type="button"
-          className="btn btn-outline-success my-2 my-sm-0"
+          className="btn btn-dark my-2 my-sm-0"
           value="Search"
           onClick={apiCall}
         />
       </form>
-      <div className="float-left">
-        {userInfo.map((summoner) => (
-          <Profile item={summoner} key={summoner.summonerName} />
-        ))}
-      </div>
-      <div className="float-right">
-        {masteryInfo.map((champ) => (
-          <Mastery item={champ} key={champ.championId} />
-        ))}
-      </div>
+      {loading ? (
+        <div className="spinner-grow text-light mt-4" role="status">
+          <span className="visually-hidden"></span>
+        </div>
+      ) : (
+        <div>
+          <div className="float-left">
+            {userInfo.map((summoner) => (
+              <Profile item={summoner} key={summoner.summonerName} />
+            ))}
+          </div>
+          <div className="float-right">
+            {masteryInfo.map((champ) => (
+              <Mastery item={champ} key={champ.championId} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
