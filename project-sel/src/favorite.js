@@ -7,7 +7,7 @@ export default function Favorite(props){
             <li className="favorite-list-item">
                 {props.item.name}
                 {props.item.icon}
-                {props.item.level}
+                {props.item.lvl}
             </li>
         </div>
     )

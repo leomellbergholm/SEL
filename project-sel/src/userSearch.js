@@ -2,13 +2,14 @@ import React, { useState, useRef } from "react";
 import Axios from "axios";
 import "./App.css";
 import Mastery from "./Mastery.js";
+import FavoriteList from './favoriteList'
 import championData from "./data/champion.json";
 export const userInfo = true;
 
 export default function UserSearch() {
   const [userInfo, setUserInfo] = useState([]);
   const [masteryInfo, setMasteryInfo] = useState([]);
-  const apiKey = "RGAPI-afa665da-c92c-42c3-aa02-cf590117330a";
+  const apiKey = "RGAPI-e6cc0408-4897-4ce0-bb0b-494ce4568164";
   const inputRef = useRef();
   const emptyArray = [];
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
@@ -76,6 +77,8 @@ export default function UserSearch() {
       {masteryInfo.map((champ) => (
         <Mastery item={champ} key={champ.championId} />
       ))}
+      
+      <FavoriteList />
     </div>
   );
 }

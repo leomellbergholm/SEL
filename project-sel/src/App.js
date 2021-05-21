@@ -11,7 +11,6 @@ function App() {
       <hr></hr>
       <UserSearch />
       {/* <UserProfile /> */}
-      <FavoriteList />
     </div>
   );
 }
