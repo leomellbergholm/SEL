@@ -1,5 +1,6 @@
 import "./App.css";
 import UserSearch from "./userSearch";
+import FavoriteList from "./favoriteList";
 
 
 function App() {
