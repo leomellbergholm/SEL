@@ -2,15 +2,15 @@ import React, { useState, useRef } from "react";
 import Axios from "axios";
 import "./App.css";
 import Mastery from "./Mastery.js";
+import FavoriteList from "./favoriteList";
 import Profile from "./Profile.js";
 import championData from "./data/champion.json";
+export const userInfo = true;
 
 export default function UserSearch() {
   const [userInfo, setUserInfo] = useState([]);
   const [masteryInfo, setMasteryInfo] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const apiKey = "RGAPI-2d06e226-14dd-4c54-8e91-8afffddf345e";
+  const apiKey = "RGAPI-e6cc0408-4897-4ce0-bb0b-494ce4568164";
   const inputRef = useRef();
   const emptyArray = [];
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
@@ -86,24 +86,17 @@ export default function UserSearch() {
           onClick={apiCall}
         />
       </form>
-      {loading ? (
-        <div className="spinner-grow text-light mt-4" role="status">
-          <span className="visually-hidden"></span>
-        </div>
-      ) : (
-        <div>
-          <div className="float-left">
-            {userInfo.map((summoner) => (
-              <Profile item={summoner} key={summoner.summonerName} />
-            ))}
-          </div>
-          <div className="float-right">
-            {masteryInfo.map((champ) => (
-              <Mastery item={champ} key={champ.championId} />
-            ))}
-          </div>
-        </div>
-      )}
+      <div className="float-left">
+        {userInfo.map((summoner) => (
+          <Profile item={summoner} key={summoner.summonerName} />
+        ))}
+      </div>
+      <div className="float-right">
+        {masteryInfo.map((champ) => (
+          <Mastery item={champ} key={champ.championId} />
+        ))}
+      </div>
+      <FavoriteList item={userInfo} />
     </div>
   );
 }
