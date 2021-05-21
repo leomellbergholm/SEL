@@ -86,17 +86,24 @@ export default function UserSearch() {
           onClick={apiCall}
         />
       </form>
-      <div className="float-left">
-        {userInfo.map((summoner) => (
-          <Profile item={summoner} key={summoner.summonerName} />
-        ))}
-      </div>
-      <div className="float-right">
-        {masteryInfo.map((champ) => (
-          <Mastery item={champ} key={champ.championId} />
-        ))}
-      </div>
-      <FavoriteList item={userInfo} />
+      {loading ? (
+        <div className="spinner-grow text-light mt-4" role="status">
+          <span className="visually-hidden"></span>
+        </div>
+      ) : (
+        <div>
+          <div className="float-left">
+            {userInfo.map((summoner) => (
+              <Profile item={summoner} key={summoner.summonerName} />
+            ))}
+          </div>
+          <div className="float-right">
+            {masteryInfo.map((champ) => (
+              <Mastery item={champ} key={champ.championId} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
