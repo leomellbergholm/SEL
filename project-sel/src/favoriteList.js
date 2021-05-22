@@ -9,34 +9,29 @@ export default function FavoriteList(props) {
 
     function loadFavorites() {
         
-        const favorites = localStorage.favorites;
-        if (favorites === undefined) {
+        const favorites = localStorage.getItem("favorites");
+
+        if(favorites) {
+            return JSON.parse(favorites);
+        }
+        else {
             return [];
         }
-        return JSON.parse(favorites);
         
     }
 
-    function saveFavorites(favorites) {
-        let jsonFavorites = JSON.stringify(favorites);
-
-        localStorage.setItem("favorites", jsonFavorites);
-    }
-
-
     function addFavorite(){
-        setFavorites([...favorites, {
+        let new_favorites = {
             name: props.item[0].summonerName,
             icon: props.item[0].summonerIcon,
             lvl: props.item[0].summonerLvl
-        }]);
+        };
 
-        const favoritesList = loadFavorites();
-        favoritesList.push(favorites);
-    
-        saveFavorites(favoritesList);
+        let favoritesList = loadFavorites();
+        favoritesList.push(new_favorites);
 
-        console.log(favorites);
+        localStorage.setItem("favorites", JSON.stringify(favoritesList));
+        setFavorites(favoritesList);
         
     }
 
