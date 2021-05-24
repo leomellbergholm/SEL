@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Mastery(props) {
+export default function Profile(props) {
   return (
     <div className="card m-3 p-2" style={{ width: "50rem", opacity: "80%" }}>
       <img

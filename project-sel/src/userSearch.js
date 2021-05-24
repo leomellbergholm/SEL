@@ -5,23 +5,23 @@ import Mastery from "./Mastery.js";
 import FavoriteList from "./favoriteList";
 import Profile from "./Profile.js";
 import championData from "./data/champion.json";
-export const userInfo = true;
+export const apiCall = true;
 
 export default function UserSearch() {
   const [userInfo, setUserInfo] = useState([]);
   const [masteryInfo, setMasteryInfo] = useState([]);
   const [loading, setLoading] = useState(false);
-  const apiKey = "RGAPI-a34d4fb6-5d6d-4eab-8a71-fc65b76f5c9f";
+  const apiKey = "RGAPI-d4a39400-15ea-4517-a42c-4026af5b6e77";
   const inputRef = useRef();
   const emptyArray = [];
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
   let champName = "";
   let champBlurb = "";
 
-  const apiCall = () => {
+  const apiCall = (name) => {
     setLoading(true);
     Axios.get(
-      `${corsAnywhere}https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${inputRef.current.value}?api_key=${apiKey}`
+      `${corsAnywhere}https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}?api_key=${apiKey}`
     )
       .then((response) => {
         if (response.status === 200) {
@@ -84,7 +84,7 @@ export default function UserSearch() {
           type="button"
           className="btn btn-dark my-2 my-sm-0"
           value="Search"
-          onClick={apiCall}
+          onClick={() => apiCall(inputRef.current.value)}
         />
       </form>
       {loading ? (
@@ -101,7 +101,7 @@ export default function UserSearch() {
               <Mastery item={champ} key={champ.championId} />
             ))}
           </div>
-          <FavoriteList />
+          <FavoriteList apiCall={apiCall} item={userInfo} />
         </div>
       )}
     </div>
