@@ -2,7 +2,22 @@ body {
   background-size: 100%;
   background-attachment: fixed;
   background-image: url("https://th.bing.com/th/id/Rdce84a42b02d9fce81bf5926a6f473e4?rik=HMM7EGYvrfMVHw&riu=http%3a%2f%2fhdqwalls.com%2fwallpapers%2fpyke-league-of-legends-4k-xm.jpg&ehk=ummoUwjM4cCBIdKYIGoPoNQKp9UK%2bSCGIRr8xHiNKrI%3d&risl=&pid=ImgRaw");
+  font-family: 'Merriweather', serif;
 }
 .App {
   text-align: center;
 }
+
+li {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin-top: 5px;
+  padding: auto;
+  height: 180px;
+  align-items: center;
+  justify-content: center;
+}
+
+img.card-img-top{
+  margin-top: 10px;
+}
+

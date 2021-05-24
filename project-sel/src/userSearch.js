@@ -62,7 +62,7 @@ export default function UserSearch() {
       });
     setTimeout(() => {
       setLoading(false); // count is 0 here
-    }, 1000);
+    }, 2000);
   };
 
   console.log(masteryInfo);
@@ -92,8 +92,8 @@ export default function UserSearch() {
           <span className="visually-hidden"></span>
         </div>
       ) : (
-        <div>
-          <div className="float-left">
+        <div className="row">
+          <div className="col-sm">
             {userInfo.map((summoner) => (
               <Profile item={summoner} key={summoner.summonerName} />
             ))}
