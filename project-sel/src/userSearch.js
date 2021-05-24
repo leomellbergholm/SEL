@@ -96,16 +96,22 @@ export default function UserSearch() {
           />
         </div>
       ) : (
-        <div className="row">
-          <div className="col-sm">
-            {userInfo.map((summoner) => (
-              <Profile item={summoner} key={summoner.summonerName} />
-            ))}
-            {masteryInfo.map((champ) => (
-              <Mastery item={champ} key={champ.championId} />
-            ))}
+        <div>
+          <div class="row">
+            <FavoriteList apiCall={apiCall} item={userInfo} />
           </div>
-          <FavoriteList apiCall={apiCall} item={userInfo} />
+          <div className="row">
+            <div className="">
+              {userInfo.map((summoner) => (
+                <Profile item={summoner} key={summoner.summonerName} />
+              ))}
+            </div>
+            <div className="">
+              {masteryInfo.map((champ) => (
+                <Mastery item={champ} key={champ.championId} />
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </div>

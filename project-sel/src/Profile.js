@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Profile(props) {
   return (
-    <div className="card m-3 p-2" style={{ width: "50rem", opacity: "80%" }}>
+    <div className="card col-4" style={{ width: "50rem", opacity: "80%" }}>
       <img
         src={props.item.summonerIcon}
         className="card-img-top d-block m-auto"
