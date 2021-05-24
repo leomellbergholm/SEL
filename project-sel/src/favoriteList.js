@@ -43,7 +43,8 @@ export default function FavoriteList(props) {
   return (
     <div
       className="col card m-3 p-2"
-      style={{ width: "15rem", opacity: "80%", float: "right" }}
+      style={{ width: "15rem", opacity: "80%", float: "right"}}
+      id="favourites-card"
     >
       <h3>Favorites</h3>
       <button

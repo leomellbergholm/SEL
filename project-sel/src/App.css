@@ -21,3 +21,10 @@ img.card-img-top{
   margin-top: 10px;
 }
 
+#profile{
+  margin-bottom: 15px;
+  border-radius: 30px 60px 90px;
+}
+#favourites-card{
+  border-radius: 120px 90px 60px 30px/30px 60px 90px 120px;
+}

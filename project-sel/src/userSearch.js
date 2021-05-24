@@ -101,12 +101,12 @@ export default function UserSearch() {
             <FavoriteList apiCall={apiCall} item={userInfo} />
           </div>
           <div className="row">
-            <div className="">
+            <div className="d-flex justify-content-center">
               {userInfo.map((summoner) => (
                 <Profile item={summoner} key={summoner.summonerName} />
               ))}
             </div>
-            <div className="">
+            <div className="d-block justify-content-center">
               {masteryInfo.map((champ) => (
                 <Mastery item={champ} key={champ.championId} />
               ))}
