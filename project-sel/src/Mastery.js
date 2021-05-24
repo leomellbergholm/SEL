@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Mastery(props) {
   return (
-    <div className="card m-3 p-2" style={{ width: "50rem", opacity: "80%" }}>
+    <div className="card col-8" style={{ width: "50rem", opacity: "80%" }}>
       <img
         src={props.item.championImg}
         className="card-img-top"
