@@ -88,8 +88,12 @@ export default function UserSearch() {
         />
       </form>
       {loading ? (
-        <div className="spinner-grow text-light mt-4" role="status">
-          <span className="visually-hidden"></span>
+        <div className="text-center">
+          <img
+            style={{ height: "250px" }}
+            src="https://media.giphy.com/media/Q8h6DB2gHp0r9pYeuF/giphy.gif"
+            alt="Loading..."
+          />
         </div>
       ) : (
         <div className="row">
