@@ -9,9 +9,12 @@ export default function Mastery(props) {
         alt="Champion splashart"
       />
       <div className="card-body">
-        <h5 className="card-title">{props.item.championName}</h5>
-        <h6>{props.item.championLvl}</h6>
-        <h6>{props.item.championPoints}</h6>
+        <h3 className="card-title">{props.item.championName}</h3>
+        <img
+          src={`https://www.masterypoints.com/assets/img/lol/mastery_icons/master${props.item.championLvl}.png`}
+        />
+
+        <h6>{props.item.championPoints} points</h6>
         <p className="card-text">{props.item.championBlurb}</p>
       </div>
     </div>

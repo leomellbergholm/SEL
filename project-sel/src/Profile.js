@@ -11,7 +11,7 @@ export default function Profile(props) {
       />
       <div className="card-body">
         <h5 className="card-title">{props.item.summonerName}</h5>
-        <h6>{props.item.summonerLvl}</h6>
+        <h6>Lvl: {props.item.summonerLvl}</h6>
       </div>
     </div>
   );
