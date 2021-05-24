@@ -11,7 +11,7 @@ export default function UserSearch() {
   const [userInfo, setUserInfo] = useState([]);
   const [masteryInfo, setMasteryInfo] = useState([]);
   const [loading, setLoading] = useState(false);
-  const apiKey = "RGAPI-e6cc0408-4897-4ce0-bb0b-494ce4568164";
+  const apiKey = "RGAPI-a34d4fb6-5d6d-4eab-8a71-fc65b76f5c9f";
   const inputRef = useRef();
   const emptyArray = [];
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
@@ -97,12 +97,11 @@ export default function UserSearch() {
             {userInfo.map((summoner) => (
               <Profile item={summoner} key={summoner.summonerName} />
             ))}
-          </div>
-          <div className="float-right">
             {masteryInfo.map((champ) => (
               <Mastery item={champ} key={champ.championId} />
             ))}
           </div>
+          <FavoriteList />
         </div>
       )}
     </div>

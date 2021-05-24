@@ -3,16 +3,16 @@ import React from 'react'
 export default function Favorite(props){
     
     return(
-        <div>
-            <li className="favorite-list-item">
-                {props.item.name}
+        <div className="card-body">
+            <li className="favorite-list-item" style={{listStyle : "none"}}>
                 <img
                     src={props.item.icon}
                     className="card-img-top"
                     alt="Summoner Icon"
-                    style={{ width: "200px", borderRadius: "50%" }}
+                    style={{ width: "75px", borderRadius: "50%" }}
                 />
-                {props.item.lvl}
+                <h5>{props.item.name}</h5>
+                <p>lvl: {props.item.lvl}</p>
             </li>
         </div>
     )

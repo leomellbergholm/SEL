@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import Favorite from './favorite'
 import {userInfo} from "./userSearch";
 
@@ -6,46 +6,44 @@ export default function FavoriteList(props) {
 
     //userinfo.summonername -> LocalStorage -> länkar -> apicall för profil -> userinfo.summonerName
     const [favorites, setFavorites] = useState([]);
+    const favoriteList = loadFavorites();
 
     function loadFavorites() {
         
-        const favorites = localStorage.favorites;
-        if (favorites === undefined) {
+        const favorites = localStorage.getItem("favorites");
+
+        if(favorites) {
+            return JSON.parse(favorites);
+        }
+        else {
             return [];
         }
-        return JSON.parse(favorites);
         
     }
-
-    function saveFavorites(favorites) {
-        let jsonFavorites = JSON.stringify(favorites);
-
-        localStorage.setItem("favorites", jsonFavorites);
-    }
-
 
     function addFavorite(){
-        setFavorites([...favorites, {
-            name: props.item[0].summonerName,
-            icon: props.item[0].summonerIcon,
-            lvl: props.item[0].summonerLvl
-        }]);
+        let new_favorites = {
+            name: props.item.summonerName,
+            icon: props.item.summonerIcon,
+            lvl: props.item.summonerLvl
+        };
 
-        const favoritesList = loadFavorites();
-        favoritesList.push(favorites);
-    
-        saveFavorites(favoritesList);
+        let favoritesList = loadFavorites();
+        favoritesList.push(new_favorites);
 
-        console.log(favorites);
+        localStorage.setItem("favorites", JSON.stringify(favoritesList));
+        setFavorites(favoritesList);
         
     }
 
+    console.log(favoriteList)
+
     return(
-        <div>
+        <div className="card m-3 p-2" style={{ width: "15rem", opacity: "80%", float: "right"}}>
             <h3>Favorites</h3>
             <button className ="btn btn-success mt-3" value="Lägg till favorit"  onClick={() => {addFavorite()}} >Add to favorites</button>
-            <ul className="favorite-list">
-                { favorites.map(favorite => <Favorite key={favorite.name} item={favorite}/>) }
+            <ul className="favorite-list" style={{padding:0}}>
+                { favoriteList.map(favorite => <Favorite key={favorite.name} item={favorite}/>) }
             </ul>
         </div>
     )
