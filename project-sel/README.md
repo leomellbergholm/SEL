@@ -15,7 +15,7 @@ men kärnramverket är mindre och därmed finns färre saker att lära sig [1]. 
 [1] https://www.codeinwp.com/blog/angular-vs-vue-vs-react/ 
     
 För att komma igång:
-
+OBS. NY API NYCKEL KRÄVS FRÅN RIOT VARJE 24H. Skriv till en av medlemmarna så uppdaterar vi nyckeln.
 1. Gå in på https://cors-anywhere.herokuapp.com/corsdemo klicka på knappen "Request temporary access".
 2. I konsolen, skriv "cd project-sel" för att placera dig i rätt mapp.
 3. Starta nu projektet med "npm start", detta kommer öppna sidan på http://localhost:3000
