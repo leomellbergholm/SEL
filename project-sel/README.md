@@ -5,9 +5,9 @@ OBS. NY API NYCKEL KRÄVS FRÅN RIOT VARJE 24H. Skriv till en av medlemmarna så
 1. Gå in på https://cors-anywhere.herokuapp.com/corsdemo klicka på knappen "Request temporary access".
 2. I konsolen, skriv "cd project-sel" för att placera dig i rätt mapp.
 3. Dependencies: Axios, node, react.
-    3.1. Installera med "npm install axios" i konsollen.
-    3.2. Installera med "npm install node" i konsollen.
-    3.3. Installera med "npm install react" i konsollen.
+    3.1. "npm install axios"
+    3.2. "npm install node"
+    3.3. "npm install react" 
 4. Starta nu projektet med "npm start", detta kommer öppna sidan på http://localhost:3000.
 
 
