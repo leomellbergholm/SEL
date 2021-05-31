@@ -11,7 +11,7 @@ export default function UserSearch() {
   const [userInfo, setUserInfo] = useState([]);
   const [masteryInfo, setMasteryInfo] = useState([]);
   const [loading, setLoading] = useState(false);
-  const apiKey = "RGAPI-a26c4385-3c48-4b8c-9dba-a04b554a850c";
+  const apiKey = "RGAPI-e70ddab6-73de-4f30-8cf4-dc150552e0f7";
   const inputRef = useRef();
   const emptyArray = [];
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
