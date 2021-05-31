@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import Favorite from "./favorite";
-import UserSearch from "./userSearch";
-import { apiCall } from "./userSearch";
+import UserSearch from "./userSearch"
 
 export default function FavoriteList(props) {
   //userinfo.summonername -> LocalStorage -> länkar -> apicall för profil -> userinfo.summonerName
@@ -19,6 +18,7 @@ export default function FavoriteList(props) {
   }
 
   function addFavorite() {
+
     let new_favorites = {
       name: props.item[0].summonerName,
       icon: props.item[0].summonerIcon,
@@ -26,6 +26,7 @@ export default function FavoriteList(props) {
     };
 
     let favoritesList = loadFavorites();
+
     favoritesList.push(new_favorites);
 
     localStorage.setItem("favorites", JSON.stringify(favoritesList));
@@ -34,11 +35,25 @@ export default function FavoriteList(props) {
     console.log(new_favorites);
   }
 
-  console.log(favoriteList);
+function deleteItem(name){
+    setFavorites(favoriteList.filter((item)=> item.name !== name ));
+    var items = JSON.parse(localStorage.getItem("favorites"));
 
-  function loadProfile(name) {
-    props.apiCall(name);
-  }
+    for (var i =0; i< items.length; i++) {
+        var item = items[i];
+        if (item.name == name) {
+            items.splice(i, 1);
+        }
+    }
+    items = JSON.stringify(items);
+
+    localStorage.setItem("favorites", items);
+}
+
+
+function loadProfile(name) {
+    props.apiCall(name);  
+}
 
   return (
     <div
@@ -65,6 +80,7 @@ export default function FavoriteList(props) {
             key={favorite.name}
             item={favorite}
             loadProfile={loadProfile}
+            deleteItem={deleteItem}
           />
         ))}
       </ul>
