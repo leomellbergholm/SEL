@@ -71,11 +71,11 @@ export default function UserSearch() {
   return (
     <div>
       <form
-        className="form-inline my-2 my-lg-0 d-block text-center"
+        className="form-inline text-center d-flex justify-content-center"
         id="search-form"
       >
         <input
-          className="form-control mr-sm-2"
+          className="form-control col-md-9"
           id="search-bar"
           type="search"
           placeholder="Search"
@@ -85,7 +85,7 @@ export default function UserSearch() {
         <input
           type="button"
           id="search-button"
-          className="btn btn-dark my-2 my-sm-0"
+          className="btn btn-dark col-sm-2 m-1"
           value="Search"
           onClick={() => apiCall(inputRef.current.value)}
         />
@@ -99,22 +99,19 @@ export default function UserSearch() {
           />
         </div>
       ) : (
-        <div className="d-block">
-          <div class="row">
+        <div>
+          <div className="row">
             <FavoriteList apiCall={apiCall} item={userInfo} />
           </div>
-          <div className="row justify-content-center">
-            <div className="col-10 d-flex justify-content-center">
-              {userInfo.map((summoner) => (
-                <Profile item={summoner} key={summoner.summonerName} />
-              ))}
-
-              <div>
-                {masteryInfo.map((champ) => (
-                  <Mastery item={champ} key={champ.championId} />
-                ))}
-              </div>
-            </div>
+          <div className="d-flex row justify-content-center flex-wrap ">
+            {userInfo.map((summoner) => (
+              <Profile item={summoner} key={summoner.summonerName} />
+            ))}
+          </div>
+          <div className="row d-flex justify-content-evenly">
+            {masteryInfo.map((champ) => (
+              <Mastery item={champ} key={champ.championId} />
+            ))}
           </div>
         </div>
       )}

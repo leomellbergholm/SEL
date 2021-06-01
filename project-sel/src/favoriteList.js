@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Favorite from "./favorite";
-import UserSearch from "./userSearch"
 
 export default function FavoriteList(props) {
   //userinfo.summonername -> LocalStorage -> länkar -> apicall för profil -> userinfo.summonerName
@@ -18,7 +17,6 @@ export default function FavoriteList(props) {
   }
 
   function addFavorite() {
-
     let new_favorites = {
       name: props.item[0].summonerName,
       icon: props.item[0].summonerIcon,
@@ -35,30 +33,29 @@ export default function FavoriteList(props) {
     console.log(new_favorites);
   }
 
-function deleteItem(name){
-    setFavorites(favoriteList.filter((item)=> item.name !== name ));
+  function deleteItem(name) {
+    setFavorites(favoriteList.filter((item) => item.name !== name));
     var items = JSON.parse(localStorage.getItem("favorites"));
 
-    for (var i =0; i< items.length; i++) {
-        var item = items[i];
-        if (item.name == name) {
-            items.splice(i, 1);
-        }
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      if (item.name == name) {
+        items.splice(i, 1);
+      }
     }
     items = JSON.stringify(items);
 
     localStorage.setItem("favorites", items);
-}
+  }
 
-
-function loadProfile(name) {
-    props.apiCall(name);  
-}
+  function loadProfile(name) {
+    props.apiCall(name);
+  }
 
   return (
     <div
       className="col card m-3 p-2"
-      style={{ width: "15rem", opacity: "80%", float: "right"}}
+      style={{ opacity: "80%" }}
       id="favourites-card"
     >
       <h3>Favorites</h3>
