@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Profile(props) {
   return (
+    <div className="d-block justify-content-end">
     <div className="card col-4" id="profile" style={{ width: "50rem", opacity: "80%" }}>
       <img
         src={props.item.summonerIcon}
@@ -13,6 +14,7 @@ export default function Profile(props) {
         <h5 className="card-title">{props.item.summonerName}</h5>
         <h6>Lvl: {props.item.summonerLvl}</h6>
       </div>
+    </div>
     </div>
   );
 }

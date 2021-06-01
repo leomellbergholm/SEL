@@ -21,6 +21,7 @@ export default function Favorite(props) {
         {props.item.name}
       </h5>
       <p>lvl: {props.item.lvl}</p>
+      <button className ="btn btn-sm btn-danger float-end" onClick={() => {props.deleteItem(props.item.name)}}>X</button>
     </li>
   );
 }

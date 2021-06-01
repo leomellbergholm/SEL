@@ -1,19 +1,15 @@
 # SEL - Samuel Ahlberg, Emil Andersson & Leo Mellberg Holm
 
-Detta projekt görs som en del av kursen Flerplatformsapplikationer på Malmö Universitet. Projektet är gjort med React. Anledningen till att vi använder React
-är helt enkelt för att vi anser React vara det mest eftertraktade på arbetsmarknaden och vill därför lära oss det över Vue eller Angular. React och Angular är
-de mest eftertraktade ramverken på arbetsmarknaden t.ex. om man tittar på jobbannonser på LinkedIn. Google Trends visar att React dominerar just nu. 
-Trots att det också visar att Angular trendar kraftigt uppåt så anser vi att React även anses vara väldigt lätt att komma igång med. Då Projektet som 
-följer inte är speciellt stort, och vi inte tidigare arbetat med Vue eller Angular, är React ett självklart val. Hade kursen kretsat kring alla tre jämnt
-hade diskussionen kanske sett annorlunda ut. 
+För att komma igång:
+OBS. NY API NYCKEL KRÄVS FRÅN RIOT VARJE 24H. Skriv till en av medlemmarna så uppdaterar vi nyckeln.
+1. Gå in på https://cors-anywhere.herokuapp.com/corsdemo klicka på knappen "Request temporary access".
+2. I konsolen, skriv "cd project-sel" för att placera dig i rätt mapp.
+3. Dependencies: Axios, node, react.
+    3.1. "npm install axios"
+    3.2. "npm install node"
+    3.3. "npm install react" 
+4. Starta nu projektet med "npm start", detta kommer öppna sidan på http://localhost:3000.
 
-Angular anses ha en brantare kurva att lära sig där TypeScript är bra att ha med sig i förväg (vilket vi inte har). 
-React har omfattande dokumentation, inklusive klar och tydlig "komma igång"-dokumentation. Majoriteten av problemen finns lösta på Stack Overflow då React varit populärt länge.
-React är dock inte ett komplett ramverk, vilket betyder att vissa avancerade funktioner kräver tredjepartsbibliotek. Detta gör det inte nödvändigtvis varken enklare eller svårare att lära sig,
-men kärnramverket är mindre och därmed finns färre saker att lära sig [1]. Tekniskt sett. 
-
-[1] https://www.codeinwp.com/blog/angular-vs-vue-vs-react/ 
-    
 
 # Getting Started with Create React App
 

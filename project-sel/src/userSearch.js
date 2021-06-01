@@ -72,10 +72,11 @@ export default function UserSearch() {
     <div>
       <form
         className="form-inline my-2 my-lg-0 d-block text-center"
-        id="search-bar"
+        id="search-form"
       >
         <input
           className="form-control mr-sm-2"
+          id="search-bar"
           type="search"
           placeholder="Search"
           aria-label="Search"
@@ -83,6 +84,7 @@ export default function UserSearch() {
         />
         <input
           type="button"
+          id="search-button"
           className="btn btn-dark my-2 my-sm-0"
           value="Search"
           onClick={() => apiCall(inputRef.current.value)}
@@ -97,20 +99,21 @@ export default function UserSearch() {
           />
         </div>
       ) : (
-        <div>
+        <div className="d-block">
           <div class="row">
             <FavoriteList apiCall={apiCall} item={userInfo} />
           </div>
-          <div className="row">
-            <div className="d-flex justify-content-center">
+          <div className="row justify-content-center">
+            <div className="col-10 d-flex justify-content-center">
               {userInfo.map((summoner) => (
                 <Profile item={summoner} key={summoner.summonerName} />
               ))}
-            </div>
-            <div className="d-block justify-content-center">
-              {masteryInfo.map((champ) => (
-                <Mastery item={champ} key={champ.championId} />
-              ))}
+
+              <div>
+                {masteryInfo.map((champ) => (
+                  <Mastery item={champ} key={champ.championId} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
