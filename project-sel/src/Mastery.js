@@ -2,11 +2,12 @@ import React from "react";
 
 export default function Mastery(props) {
   return (
-    <div className="card col-sm m-2" style={{ opacity: "80%" }}>
+    <div className="card col-md m-2" style={{ opacity: "80%" }}>
       <img
         src={props.item.championImg}
-        className="card-img-top"
+        className="card-img-top p-2"
         alt="Champion splashart"
+        style={{ borderRadius: "20px" }}
       />
       <div className="card-body">
         <h3 className="card-title">{props.item.championName}</h3>

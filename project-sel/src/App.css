@@ -1,7 +1,9 @@
 body {
-  background-size: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: url("https://candid.technology/wp-content/uploads/2019/10/League-of-Legends-Wallpaper-23.jpg");
+  background-position: center;
+  background-image: url("https://th.bing.com/th/id/Rfad395270442678087c74c8b8e1af234?rik=yeWtf1%2bQLPzeKA");
   font-family: "Merriweather", serif;
 }
 .App {

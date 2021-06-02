@@ -8,6 +8,7 @@ export default function FavoriteList(props) {
 
   function loadFavorites() {
     const favorites = localStorage.getItem("favorites");
+    console.log(props.item.length);
 
     if (favorites) {
       return JSON.parse(favorites);
@@ -17,6 +18,7 @@ export default function FavoriteList(props) {
   }
 
   function addFavorite() {
+    console.log(props.item);
     let new_favorites = {
       name: props.item[0].summonerName,
       icon: props.item[0].summonerIcon,
@@ -59,15 +61,29 @@ export default function FavoriteList(props) {
       id="favourites-card"
     >
       <h3>Favorites</h3>
-      <button
-        className="btn btn-success mt-3"
-        value="Lägg till favorit"
-        onClick={() => {
-          addFavorite();
-        }}
-      >
-        Add to favorites
-      </button>
+      {props.item.length === 1 ? (
+        <button
+          className="btn btn-dark mt-3"
+          value="Lägg till favorit"
+          onClick={() => {
+            addFavorite();
+          }}
+        >
+          Add to favorites
+        </button>
+      ) : (
+        <button
+          className="btn btn-dark mt-3"
+          value="Lägg till favorit"
+          disabled
+          onClick={() => {
+            addFavorite();
+          }}
+        >
+          Add to favorites
+        </button>
+      )}
+
       <ul
         className="favorite-list d-flex flex-wrap justify-content-center"
         style={{ padding: 0 }}
